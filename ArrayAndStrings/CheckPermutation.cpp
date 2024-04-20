@@ -33,6 +33,7 @@ bool checkPermutation2(string s, string t)
     }
     return true;
 }
+
 int main()
 {
     if (checkPermutation2("saurab", "baruas"))
