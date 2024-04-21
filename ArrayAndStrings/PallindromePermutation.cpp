@@ -33,7 +33,26 @@ bool isPermutationOfPallindrome(string phrase)
     return checkMaxOneOdd(table);
 }
 
+bool isPermutationOfPallindrome2(string phrase)
+{
+    int countOdd = 0;
+    vector<int> table('z' - 'a' + 1);
+    for (char c : phrase)
+    {
+        table[c - 'a']++;
+        if (table[c - 'a'] % 2 == 1)
+        {
+            countOdd++;
+        }
+        else
+        {
+            countOdd--;
+        }
+    }
+    return countOdd <= 1;
+}
+
 int main()
 {
-    cout << isPermutationOfPallindrome("moyemoey");
+    cout << isPermutationOfPallindrome2("moyemoey");
 }
