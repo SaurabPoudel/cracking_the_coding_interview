@@ -47,7 +47,7 @@ bool oneEditAway(string first, string second)
 {
     if (first.length() == second.length())
     {
-        return oneEditInsert(first, second);
+        return oneEditReplace(first, second);
     }
     else if (first.length() + 1 == second.length())
     {
@@ -55,7 +55,7 @@ bool oneEditAway(string first, string second)
     }
     else if (first.length() - 1 == second.length())
     {
-        return oneEditReplace(second, first);
+        return oneEditInsert(second, first);
     }
     return false;
 }
