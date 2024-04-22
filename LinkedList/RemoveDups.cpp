@@ -57,6 +57,34 @@ void deleteDups(Node *head)
     }
 }
 
+// above solution has time complexity of O(N) and space complexity of O(N)
+// when space is crucial he can increase time complexity to O(N^2) to compensate space complexity to O(1)
+// Lets do that
+
+void removeDumps(Node *head)
+{
+    Node *current = head;
+
+    while (current != NULL)
+    {
+        Node *runner = current;
+        while (runner->next != NULL)
+        {
+            if (runner->next->data == current->data)
+            {
+                Node *duplicate = runner->next;
+                runner->next = runner->next->next;
+                delete duplicate;
+            }
+            else
+            {
+                runner = runner->next;
+            }
+        }
+        current = current->next;
+    }
+}
+
 Node *convertArr2LL(vector<int> arr)
 {
     Node *head = new Node(arr[0]);
@@ -76,7 +104,7 @@ int main()
     Node *head = convertArr2LL(v);
     cout << "Before removing dups" << endl;
     printLL(head);
-    deleteDups(head);
+    removeDumps(head);
     cout << "After removing dups" << endl;
     printLL(head);
 }
