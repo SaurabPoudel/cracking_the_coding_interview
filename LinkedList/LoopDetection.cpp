@@ -42,18 +42,58 @@ bool loopDetected(Node *head)
     return false;
 }
 
+/**
+ * Naive solution using unordered map
+ * TC O(N) and SC O(N)
+ */
+Node *startingOfLoop1(Node *head)
+{
+    if (head == NULL)
+        return NULL;
+    Node *temp = head;
+    unordered_map<Node *, bool> store;
+    while (temp != NULL)
+    {
+        if (store[temp])
+        {
+            return temp;
+        }
+        store[temp] = true;
+        temp = temp->next;
+    }
+    return NULL;
+}
+/**
+ * Optimal solution with SC O(1)
+ */
+Node *startingOfLoop(Node *head)
+{
+    Node *slow = head;
+    Node *fast = head;
+    while (fast->next != NULL && fast != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast)
+        {
+            slow = head;
+            while (slow != fast)
+            {
+                slow = slow->next;
+                fast = fast->next;
+            }
+            return slow;
+        }
+    }
+    return NULL;
+}
+
 int main()
 {
     vector<int> arr = {2, 3, 4, 5, 6};
     Node *head = convertArr2LL(arr);
     Node *temp = head;
     temp->next->next->next->next->next = head->next->next->next;
-    if (loopDetected(head))
-    {
-        cout << "Loop Detected";
-    }
-    else
-    {
-        cout << "No Loop Detected";
-    }
+    Node *start = startingOfLoop(head);
+    cout << start->data;
 }
