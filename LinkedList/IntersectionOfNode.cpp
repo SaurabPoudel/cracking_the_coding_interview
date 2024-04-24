@@ -51,7 +51,7 @@ Node *collisionPoint(Node *head1, Node *head2, int size)
  * Time Complexity O(N1+2N2) where N2 is longer linkedlist
  * Space Complexity O(1)
  */
-Node *findIntersection(Node *head1, Node *head2)
+Node *findIntersection2(Node *head1, Node *head2)
 {
     int n1 = 0, n2 = 0;
     Node *t1 = head1;
@@ -75,6 +75,31 @@ Node *findIntersection(Node *head1, Node *head2)
     {
         return collisionPoint(head2, head1, n2 - n1);
     }
+}
+
+/**
+ * Optimal solution
+ * TC = O(N1 + N2) and SC = O(1)
+ */
+
+Node *findIntersection(Node *head1, Node *head2)
+{
+    if (head1 == NULL || head2 == NULL)
+        return NULL;
+    Node *t1 = head1;
+    Node *t2 = head2;
+    while (t1 != t2)
+    {
+        t1 = t1->next;
+        t2 = t2->next;
+        if (t1 == t2)
+            return t1;
+        if (t1->next == NULL)
+            t1 = head2;
+        else
+            t2 = head1;
+    }
+    return t1;
 }
 
 int main()
