@@ -29,22 +29,6 @@ bool isPallindrome1(Node *head)
     return true;
 }
 
-/**
- * Optimal solution
- * Time complexity O(N)
- * Special Complexity O(N)
- */
-Node *reverseLinkedList1(Node *head)
-{
-    if (head == NULL || head->next == NULL)
-        return head;
-    Node *newHead = reverseLinkedList1(head->next);
-    Node *front = head->next;
-    front->next = head;
-    head->next = NULL;
-    return newHead;
-}
-
 Node *reverseLinkedList(Node *head)
 {
     if (head == NULL || head->next == NULL)
@@ -57,7 +41,7 @@ Node *reverseLinkedList(Node *head)
     return newHead;
 }
 
-bool isPallindrome(Node *head)
+bool isPallindrome1(Node *head)
 {
     if (head == NULL || head->next == NULL)
         return true;
@@ -70,6 +54,41 @@ bool isPallindrome(Node *head)
         fast = fast->next->next;
     }
     Node *newHead = reverseLinkedList(slow->next);
+    Node *first = head;
+    Node *second = newHead;
+
+    while (second != NULL)
+    {
+        if (first->data != second->data)
+        {
+            reverseLinkedList(newHead);
+            return false;
+        }
+        first = first->next;
+        second = second->next;
+    }
+    reverseLinkedList(newHead);
+    return true;
+}
+/**
+ * Optimal solution
+ * Time complexity O(N)
+ * Special Complexity O(N)
+ */
+bool isPallindrome(Node *head)
+{
+    if (head == NULL || head->next == NULL)
+        return true;
+    Node *fast = head;
+    Node *slow = head;
+
+    while (fast->next != NULL && fast->next->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    Node *newHead = reverseLinkedList(slow->next);
+
     Node *first = head;
     Node *second = newHead;
 
