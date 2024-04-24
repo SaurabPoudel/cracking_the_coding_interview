@@ -96,7 +96,7 @@ Node *findIntersection(Node *head1, Node *head2)
             return t1;
         if (t1->next == NULL)
             t1 = head2;
-        else
+        if (t2->next == NULL)
             t2 = head1;
     }
     return t1;
