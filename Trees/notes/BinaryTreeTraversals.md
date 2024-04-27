@@ -25,10 +25,21 @@ There are basically three types of depth first search technique.
   
   Order of the traversal: 5 6  2 9 11 3 4 
 
-### How to remember DFS technique
+### How to remember DFS traversal sequence ?
 
 To remember dfs sequence we have a little trick. 
-- In (root in the middle )
-- Pre (root in the beginning)
-- Post (root at the last)
-and left always comes before right
+> In (root in the middle )
+> Pre (root in the beginning)
+  >Post (root at the last)
+>and left always comes before right
+
+## BFS
+
+Breadth First Search sequence is easy to remember.
+
+For the given binary tree the sequence is :
+
+4 2 3 5 6 9 11
+
+> left->right
+
