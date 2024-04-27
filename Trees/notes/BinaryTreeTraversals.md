@@ -24,3 +24,11 @@ There are basically three types of depth first search technique.
 - Postorder Traversal (Left-Right-Root)
   
   Order of the traversal: 5 6  2 9 11 3 4 
+
+### How to remember DFS technique
+
+To remember dfs sequence we have a little trick. 
+- In (root in the middle )
+- Pre (root in the beginning)
+- Post (root at the last)
+and left always comes before right
