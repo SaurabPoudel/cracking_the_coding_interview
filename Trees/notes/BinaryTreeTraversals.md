@@ -48,7 +48,7 @@ For the given binary tree the sequence is :
 
 ![binary tree](traversal-challenge.png)
 
-We will solve dfs traversal order for this tree. 
+Lets solve dfs traversal order for this tree. 
 
 - Inorder Traversal (Left-Root-Right)
   
