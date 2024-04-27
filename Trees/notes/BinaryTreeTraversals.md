@@ -1,1 +1,1 @@
-![binary tree](github.com/SaurabPoudel/cracking_the_coding_interview/tree/main/Trees/binary-tree.png)
+![binary tree](binarytree.png)
