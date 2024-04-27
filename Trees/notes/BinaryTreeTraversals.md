@@ -43,3 +43,25 @@ For the given binary tree the sequence is :
 
 > left->right
 
+
+## Traversal  challenge
+
+![binary tree](traversal-challenge.png)
+
+We will solve dfs traversal order for this tree. 
+
+- Inorder Traversal (Left-Root-Right)
+  
+  Order for the traversal: 15 20 25 30 31 32 35 48 50 66 67 69 65 70 90 94 98 99 
+
+- Preorder Traversal (Root-Left-Right)
+  
+  Order for the traversal: 50 48 30 20 15 25 32 31 35 70 65 67 66 69 90 98 94 99
+
+- Postorder Traversal (Left-Right-Root)
+  Order for the traversal: 15 25 20 31 35 32 30 48 66 69 67 65 94 99 98 90 70 50
+
+
+
+
+
