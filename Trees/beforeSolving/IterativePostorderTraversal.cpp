@@ -51,7 +51,7 @@ vector<int> postorderTraversal1(Node *root)
  * @param Node*
  * @returns vector<int>
  */
-vector<int> postorderTraversal(Node *root)
+vector<int> postorderTraversal2(Node *root)
 {
     vector<int> postorder;
     Node *curr = root;
@@ -67,6 +67,48 @@ vector<int> postorderTraversal(Node *root)
         }
         else
         {
+            Node *temp = st.top()->right;
+            if (temp == NULL)
+            {
+                temp = st.top();
+                st.pop();
+                postorder.push_back(temp->data);
+                while (!st.empty() && temp == st.top()->right)
+                {
+                    temp = st.top();
+                    st.pop();
+                    postorder.push_back(temp->data);
+                }
+            }
+            else
+            {
+                curr = temp;
+            }
+        }
+    }
+    return postorder;
+}
+
+vector<int> postorderTraversal(Node *root)
+{
+    vector<int> postorder;
+    stack<Node *> st;
+    Node *curr = root;
+    if (root == NULL)
+    {
+        return postorder;
+    }
+
+    while (curr != NULL || !st.empty())
+    {
+        if (curr != NULL)
+        {
+            st.push(curr);
+            curr = curr->left;
+        }
+        else
+        {
+
             Node *temp = st.top()->right;
             if (temp == NULL)
             {
